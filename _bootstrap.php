@@ -91,6 +91,13 @@ function doRequest($url, $method, $data = null, $headers = null) {
     if (!empty($headers)) {
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
+
+    echo "000";
+    echo implode("---",$data);
+    echo implode("---",$headers);
+    exit("exit");
+
+
     $response = curl_exec($curl);
     curl_close($curl);
 
@@ -131,6 +138,7 @@ function getJsonPayload() {
 }
 
 function decodeResponse($response) {
+   // echo $response;
     $decoded = json_decode($response, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
         error(400, 'Could not decode json response from gateway');
