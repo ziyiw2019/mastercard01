@@ -91,11 +91,13 @@ function doRequest($url, $method, $data = null, $headers = null) {
     if (!empty($headers)) {
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
-
+    /*
     echo "000";
     echo implode("---",$data);
     echo implode("---",$headers);
     exit("exit");
+
+    */
 
 
     $response = curl_exec($curl);
