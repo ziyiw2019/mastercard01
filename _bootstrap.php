@@ -26,7 +26,7 @@ $region = getenv('GATEWAY_REGION');
 $apiVersion = getenv('GATEWAY_API_VERSION');
 */
 $merchantId = 'TEST168900001330';
-$password = 'itea,135';
+$password = '44eb5f5f0e64ac2a12b1c8bf7c3eab53';
 $region = 'ASIA_PACIFIC';
 $apiVersion = '57';
 
