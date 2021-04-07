@@ -71,7 +71,7 @@ parse_str($_SERVER['QUERY_STRING'], $query);
 // build auth headers
 $headers = array(
     'Content-type: application/json',
-    'Authorization: Basic ' . base64_encode("merchant.$merchantId:$password")
+    'Authorization: Basic ' . base64_encode("merchant.${merchantId}:${password}")
 );
 
 // construct page url
