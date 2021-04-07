@@ -68,8 +68,6 @@ $gatewayUrl = "https://${prefix}gateway.mastercard.com/api/rest/version/${apiVer
 $query = array();
 parse_str($_SERVER['QUERY_STRING'], $query);
 
-$merchantId = 'TEST168900001330';
-$password = '44eb5f5f0e64ac2a12b1c8bf7c3eab53';
 // build auth headers
 $headers = array(
     'Content-type: application/json',
@@ -92,8 +90,7 @@ function doRequest($url, $method, $data = null, $headers = null) {
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
     }
     if (!empty($headers)) {
-       // echo implode(",",$headers);
-      // die();
+       // echo 'ddddd';
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
     /*
