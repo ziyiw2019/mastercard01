@@ -19,11 +19,11 @@
 include '_bootstrap.php';
 
 // proxy POST requests
-if (intercept('POST')) {
+//if (intercept('POST')) {
     $path = '/session';
 
     proxyCall($path);
-}
+//}
 
 ?>
 

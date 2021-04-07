@@ -28,7 +28,7 @@ $apiVersion = getenv('GATEWAY_API_VERSION');
 $merchantId = 'TEST168900001330';
 $password = '44eb5f5f0e64ac2a12b1c8bf7c3eab53';
 $region = 'ASIA_PACIFIC';
-$apiVersion = '57';
+$apiVersion = '53';
 
 // merchant id must be TEST
 $merchantIdPrefix = substr($merchantId, 0, 4);
@@ -86,18 +86,20 @@ function doRequest($url, $method, $data = null, $headers = null) {
     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     if (!empty($data)) {
+
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
     }
     if (!empty($headers)) {
+        echo 'ddddd';
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
-    /*
+
     echo "000";
     echo implode("---",$data);
     echo implode("---",$headers);
     exit("exit");
 
-    */
+
 
 
     $response = curl_exec($curl);
