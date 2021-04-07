@@ -62,7 +62,7 @@ if (intval($apiVersion) < 39) {
 }
 
 // build api endpoint url
-$gatewayUrl = "https://${prefix}gateway.mastercard.com/api/rest/version/${apiVersion}/merchant/${merchantId}";
+$gatewayUrl = "https://test.gateway.mastercard.com/api/rest/version/${apiVersion}/merchant/${merchantId}";
 
 // parse query string
 $query = array();
@@ -138,12 +138,15 @@ function getJsonPayload() {
             error(400, 'Could not parse json payload');
         }
     }
-
-    return $input;
+   // echo 'cc';
+   // echo $input;
+   // echo 'dd';
+     return $input;
+   // return json_decode($input);
 }
 
 function decodeResponse($response) {
-   // echo $response;
+    echo $response;
     $decoded = json_decode($response, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
         error(400, 'Could not decode json response from gateway');
@@ -176,7 +179,9 @@ function proxyCall($path) {
 
     // proxy authenticated request
     $response = doRequest($gatewayUrl . $path, $_SERVER['REQUEST_METHOD'], $payload, $headers);
-
+    //echo 'aa';
+   // echo $response;
+   // echo 'bb';
     // output response
     outputJsonResponse($response);
 }
