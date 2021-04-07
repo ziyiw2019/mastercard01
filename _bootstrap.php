@@ -90,14 +90,15 @@ function doRequest($url, $method, $data = null, $headers = null) {
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
     }
     if (!empty($headers)) {
-        echo 'ddddd';
+       // echo 'ddddd';
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
-
+    /*
     echo "000";
     echo implode("---",$data);
     echo implode("---",$headers);
     exit("exit");
+    */
 
 
 
