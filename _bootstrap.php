@@ -148,7 +148,7 @@ function getJsonPayload() {
 }
 
 function decodeResponse($response) {
-    echo $response;
+   // echo $response;
     $decoded = json_decode($response, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
         error(400, 'Could not decode json response from gateway');
