@@ -1,6 +1,6 @@
 <?php
 
-/*
+/* test master card test push
  * Copyright (c) 2016 Mastercard
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,8 +62,8 @@ if (intval($apiVersion) < 39) {
 }
 
 // build api endpoint url
-$gatewayUrl = "https://${prefix}gateway.mastercard.com/api/rest/version/${apiVersion}/merchant/${merchantId}";
-
+//$gatewayUrl = "https://${prefix}gateway.mastercard.com/api/rest/version/${apiVersion}/merchant/${merchantId}";
+$gatewayUrl = "https://test-gateway.mastercard.com/api/rest/version/${apiVersion}/merchant/${merchantId}";
 // parse query string
 $query = array();
 parse_str($_SERVER['QUERY_STRING'], $query);
@@ -86,11 +86,25 @@ function doRequest($url, $method, $data = null, $headers = null) {
     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     if (!empty($data)) {
+
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
     }
     if (!empty($headers)) {
+     //  echo 'ddddd';
+     //  echo implode("---",$headers);
+      // die();
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
+    /*
+    echo "000";
+    echo implode("---",$data);
+    echo implode("---",$headers);
+    exit("exit");
+    */
+
+
+
+
     $response = curl_exec($curl);
     curl_close($curl);
 
@@ -126,11 +140,15 @@ function getJsonPayload() {
             error(400, 'Could not parse json payload');
         }
     }
-
-    return $input;
+   // echo 'cc';
+   // echo $input;
+   // echo 'dd';
+     return $input;
+   // return json_decode($input);
 }
 
 function decodeResponse($response) {
+    echo $response;
     $decoded = json_decode($response, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
         error(400, 'Could not decode json response from gateway');
@@ -163,7 +181,9 @@ function proxyCall($path) {
 
     // proxy authenticated request
     $response = doRequest($gatewayUrl . $path, $_SERVER['REQUEST_METHOD'], $payload, $headers);
-
+    //echo 'aa';
+   // echo $response;
+   // echo 'bb';
     // output response
     outputJsonResponse($response);
 }
